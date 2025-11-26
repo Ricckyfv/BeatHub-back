@@ -54,21 +54,41 @@ const PRODUCTS = {
         image: 'http://127.0.0.1:5500/images/ph4.png'
     },
     '5': { 
-        name: "Producto 1 - Audífonos", 
+        name: "Nuevo Producto 1 - Audífonos", 
         price: 15000, // $150.00 en centavos
         image: 'http://127.0.0.1:5500/images/ph1.png'
     },
     '6': { 
-        name: "Producto 2 - Audífonos", 
+        name: "Nuevo Producto 2 - Audífonos", 
         price: 15000, // $150.00 en centavos
         image: 'http://127.0.0.1:5500/images/ph2.png'
     },
     '7': { 
-        name: "Producto 3 - Audífonos", 
+        name: "Nuevo Producto 3 - Audífonos", 
         price: 15000,
         image: 'http://127.0.0.1:5500/images/ph3.png'
     },
     '8': { 
+        name: "Nuevo Producto 4 - Audífonos", 
+        price: 15000,
+        image: 'http://127.0.0.1:5500/images/ph4.png'
+    },
+    '9': { 
+        name: "Producto 1 - Audífonos", 
+        price: 15000, // $150.00 en centavos
+        image: 'http://127.0.0.1:5500/images/ph1.png'
+    },
+    '10': { 
+        name: "Producto 2 - Audífonos", 
+        price: 15000, // $150.00 en centavos
+        image: 'http://127.0.0.1:5500/images/ph2.png'
+    },
+    '11': { 
+        name: "Producto 3 - Audífonos", 
+        price: 15000,
+        image: 'http://127.0.0.1:5500/images/ph3.png'
+    },
+    '12': { 
         name: "Producto 4 - Audífonos", 
         price: 15000,
         image: 'http://127.0.0.1:5500/images/ph4.png'
