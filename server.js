@@ -53,6 +53,26 @@ const PRODUCTS = {
         price: 15000,
         image: 'http://127.0.0.1:5500/images/ph4.png'
     },
+    '5': { 
+        name: "Producto 1 - Audífonos", 
+        price: 15000, // $150.00 en centavos
+        image: 'http://127.0.0.1:5500/images/ph1.png'
+    },
+    '6': { 
+        name: "Producto 2 - Audífonos", 
+        price: 15000, // $150.00 en centavos
+        image: 'http://127.0.0.1:5500/images/ph2.png'
+    },
+    '7': { 
+        name: "Producto 3 - Audífonos", 
+        price: 15000,
+        image: 'http://127.0.0.1:5500/images/ph3.png'
+    },
+    '8': { 
+        name: "Producto 4 - Audífonos", 
+        price: 15000,
+        image: 'http://127.0.0.1:5500/images/ph4.png'
+    },
     // Si tienes otra sección (id="lista-2") con productos 5, 6, etc., añádelos aquí:
     // '5': { name: "Auriculares Estándar", price: 10000 }, // $100.00
     // '6': { name: "Micrófono USB", price: 8000 },        // $80.00
