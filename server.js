@@ -21,10 +21,10 @@ const allowedOrigins = [
 
 // Middlewares
 app.use(cors({ 
-    origin: 'http://127.0.0.1:5500',
+    origin: allowedOrigins,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Métodos HTTP permitidos
     credentials: true // Permite cookies y encabezados de autenticación
-})); // Reemplaza 5500 por el puerto de tu frontend
+}));
 
 app.use(express.json()); // Permite recibir JSON en las peticiones
 
