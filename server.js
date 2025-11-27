@@ -3,10 +3,54 @@ require('dotenv').config();
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const express = require('express');
 const cors = require('cors');
+// --- 1. AÑADE ESTO ARRIBA (Junto a los otros require) ---
+const nodemailer = require('nodemailer');
 
 const app = express();
 // En server.js
 const PORT = process.env.PORT || 4242; // Usa el puerto de Render o 4242 localmente
+
+app.post('/enviar-correo', async (req, res) => {
+    const { nombre, email, mensaje } = req.body;
+
+    try {
+        // Configurar el transporte (quién envía el correo)
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.EMAIL_USER, // Tu correo de Gmail
+                pass: process.env.EMAIL_PASS  // La contraseña de aplicación de 16 letras
+            }
+        });
+
+        // Configurar el contenido del correo
+        const mailOptions = {
+            from: `"${nombre}" <${email}>`, // Quien lo envía (según el form)
+            to: process.env.EMAIL_USER, // A quién le llega (A TI MISMO)
+            subject: `Nuevo mensaje de contacto BeatHub de: ${nombre}`,
+            text: `
+                Has recibido un nuevo mensaje desde tu web:
+                
+                Nombre: ${nombre}
+                Email: ${email}
+                Mensaje:
+                ${mensaje}
+            `
+        };
+
+        // Enviar el correo
+        await transporter.sendMail(mailOptions);
+
+        res.status(200).json({ message: 'Correo enviado con éxito' });
+
+    } catch (error) {
+        console.error('Error al enviar el correo:', error);
+        res.status(500).json({ error: 'Error al enviar el correo' });
+        
+        // Responde al frontend con el error, pero oculta detalles sensibles.
+        res.status(500).json({ error: 'Fallo interno del servidor. Revisar logs.' });
+    }
+});
 
 app.listen(PORT, () => {
     console.log(`Backend escuchando en el puerto ${PORT}`);
