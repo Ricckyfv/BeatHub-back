@@ -10,6 +10,22 @@ const app = express();
 // En server.js
 const PORT = process.env.PORT || 4242; // Usa el puerto de Render o 4242 localmente
 
+// 2. Definir los orígenes permitidos
+const allowedOrigins = [
+    'http://127.0.0.1:5500', // Para pruebas locales
+    'http://localhost:4242',  // Para pruebas locales
+    'https://ricckyfv.github.io' // ¡TU DOMINIO DE GITHUB PAGES!
+];
+
+// Middlewares
+app.use(cors({ 
+    origin: allowedOrigins,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Métodos HTTP permitidos
+    credentials: true // Permite cookies y encabezados de autenticación
+}));
+
+app.use(express.json()); // Permite recibir JSON en las peticiones
+
 app.post('/enviar-correo', async (req, res) => {
     const { nombre, email, mensaje } = req.body;
 
@@ -56,21 +72,6 @@ app.listen(PORT, () => {
     console.log(`Backend escuchando en el puerto ${PORT}`);
 });
 
-// 2. Definir los orígenes permitidos
-const allowedOrigins = [
-    'http://127.0.0.1:5500', // Para pruebas locales
-    'http://localhost:4242',  // Para pruebas locales
-    'https://ricckyfv.github.io' // ¡TU DOMINIO DE GITHUB PAGES!
-];
-
-// Middlewares
-app.use(cors({ 
-    origin: allowedOrigins,
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Métodos HTTP permitidos
-    credentials: true // Permite cookies y encabezados de autenticación
-}));
-
-app.use(express.json()); // Permite recibir JSON en las peticiones
 
 // ----------------------------------------------------
 // ⚠️ 1. SIMULACIÓN DE BASE DE DATOS DE PRODUCTOS (Backend)
