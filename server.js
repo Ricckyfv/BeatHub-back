@@ -32,7 +32,10 @@ app.post('/enviar-correo', async (req, res) => {
     try {
         // Configurar el transporte (quién envía el correo)
         const transporter = nodemailer.createTransport({
-            service: 'gmail',
+            // ⚠️ CAMBIAMOS 'service: gmail' por la configuración explícita:
+            host: 'smtp.gmail.com',
+            port: 465, // Puerto seguro para SSL
+            secure: true, // Usa SSL/TLS (el puerto 465 requiere esto)
             auth: {
                 user: process.env.EMAIL_USER, // Tu correo de Gmail
                 pass: process.env.EMAIL_PASS  // La contraseña de aplicación de 16 letras
